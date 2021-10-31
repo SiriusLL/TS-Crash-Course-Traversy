@@ -81,3 +81,107 @@ let cid: any = 1
 // let customerId = <number>cid
 let customerId = cid as number
 
+// Functions
+function addNum(x: number, y: number): number {    // number after params is type for return value //need to give function params a type unless you disable implicit any
+  return x + y
+}
+
+console.log(addNum(1, 2))
+
+function log(message: string | number): void {                                 // use void for no return
+  console.log(message)
+}
+
+log('hello')
+log(99)
+log(true)
+
+// Interfaces
+interface UserInterface  {
+  readonly id: number,  // readonly makes immutable
+  name: string,
+  age?: number,  //? makes it optional
+}
+
+const user1: UserInterface = {
+  id: 1,
+  name: 'John',
+}
+
+// type can be used with primitives and unions
+type Point = number | string
+//can not use interface for primitives or unions
+
+interface MathFunc {
+  (x: number, y: number): number
+}
+
+const add: MathFunc = (x: number, y: number): number => x + y
+const sub: MathFunc = (x: number, y: number): number => x - y
+
+
+// // Classes
+// class Person {
+//   // private id: number         //only access inside the class
+//   protected id: number          //only access from this class or classes extended by this class
+//   id: number
+//   name: string
+  
+//   constructor(id: number, name: string) {
+//     // console.log(123)
+//     this.id = id
+//     this.name = name
+//   }
+
+//   register() {    //Methods
+//     return `${this.name} is now registered`
+//   }
+// }
+
+// const brad = new Person(1, 'Brad Mad')
+// const mike = new Person(2, 'Mike Pike')
+
+// console.log(brad.register())
+
+// console.log(brad, mike)
+
+
+// Class Interfaces
+interface PersonInterface  {
+  id: number,
+  name: string,
+  register(): string
+}
+
+// Classes
+class Person implements PersonInterface {
+  id: number
+  name: string
+  
+  constructor(id: number, name: string) {
+    // console.log(123)
+    this.id = id
+    this.name = name
+  }
+
+  register() {    //Methods
+    return `${this.name} is now registered`
+  }
+}
+
+const brad = new Person(1, 'Brad Mad')
+const mike = new Person(2, 'Mike Pike')
+
+//Subclasses
+class Employee extends Person {
+  position: string;
+
+  constructor(id: number, name: string, position: string) {
+    super(id, name)
+    this.position = position
+  }
+}
+
+const emp = new Employee(3, 'Shawn', 'Developer')
+
+// console.log(emp.name, emp.register())

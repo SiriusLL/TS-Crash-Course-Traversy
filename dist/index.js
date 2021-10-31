@@ -52,3 +52,42 @@ const user = {
 let cid = 1;
 // let customerId = <number>cid
 let customerId = cid;
+// Functions
+function addNum(x, y) {
+    return x + y;
+}
+console.log(addNum(1, 2));
+function log(message) {
+    console.log(message);
+}
+log('hello');
+log(99);
+log(true);
+const user1 = {
+    id: 1,
+    name: 'John',
+};
+const add = (x, y) => x + y;
+const sub = (x, y) => x - y;
+// Classes
+class Person {
+    constructor(id, name) {
+        // console.log(123)
+        this.id = id;
+        this.name = name;
+    }
+    register() {
+        return `${this.name} is now registered`;
+    }
+}
+const brad = new Person(1, 'Brad Mad');
+const mike = new Person(2, 'Mike Pike');
+//Subclasses
+class Employee extends Person {
+    constructor(id, name, position) {
+        super(id, name);
+        this.position = position;
+    }
+}
+const emp = new Employee(3, 'Shawn', 'Developer');
+// console.log(emp.name, emp.register())
